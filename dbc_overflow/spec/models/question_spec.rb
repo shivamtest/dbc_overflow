@@ -7,4 +7,7 @@ describe Question do
   it { should ensure_length_of(:title).is_at_least(15).is_at_most(100)}
   it { should ensure_length_of(:content).is_at_least(100)}
 
+  it { should have_many(:answers) }
+  it { should belong_to(:user) }
+
 end

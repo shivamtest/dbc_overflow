@@ -2,8 +2,12 @@ DbcOverflow::Application.routes.draw do
 
   root to: "questions#index"
 
-  resources :answers, :questions, :users
+  resources :users
   resources :sessions, only: [:create, :new, :destroy]
+  
+  resources :questions do 
+    resources :answers, only: [:create, :destroy]
+  end
 
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

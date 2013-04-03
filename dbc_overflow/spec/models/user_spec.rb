@@ -8,4 +8,7 @@ describe User do
   it { should validate_format_of(:email).with("jhw1202@gmail.com")}
   it { should validate_presence_of(:password)}
   it { should validate_presence_of(:password_confirmation)}
+
+  it { should have_many(:questions) }
+  it { should have_many(:answers) }
 end

@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
+  has_many :answers
+  belongs_to :user
+  
   attr_accessible :best_answer, :content, :title, :user_id
 
   validates :content, :title, :user_id, presence: true
