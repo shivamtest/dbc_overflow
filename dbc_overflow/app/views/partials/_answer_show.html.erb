@@ -1,0 +1,13 @@
+<% if @answers.any? %>  
+  <h3>Answers</h3>
+  <% @answers.each do |answer| %>
+      <section class="answer">
+        <ul>
+            <li><%= answer.content %></li>
+              <%= render :partial => "partials/votes", :locals => { :answer => answer } %>
+        </ul>
+      </section>
+  <% end %>
+<% end %>
+
+

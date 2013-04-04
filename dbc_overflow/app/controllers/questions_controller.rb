@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    redirect_to root_path, :notice => "Please Signup/Login" unless signed_in?
     @question = Question.new
   end
 
