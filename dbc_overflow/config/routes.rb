@@ -11,6 +11,10 @@ DbcOverflow::Application.routes.draw do
 
   resources :votes, only: [:create, :update]
   
+  # resources :comments, only:[:new ,:create]
+
+  resources :comments, only:[:new, :create]
+
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   # The priority is based upon order of creation:

@@ -7,6 +7,8 @@
 				<%= answer.votes.map(&:description).inject(:+) %>
             <li><%= answer.content %></li>
               <%= render :partial => "partials/votes", :locals => { :answer => answer } %>
+              <%= render :partial => "partials/answer_comments", :locals => {:comments => answer.comments} %>
+              <%= render :partial => "partials/answer_comment_form", :locals => { :answer => answer.id} %>
         </ul>
       </section>
   <% end %>

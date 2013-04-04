@@ -6,5 +6,8 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.content %></p>
 
+<%= render "partials/question_comment_form" %>
+<%= render "partials/question_comments_list" %>
+
 <%= render "partials/answer_show" %>
 <%= render "partials/answer_form" %>

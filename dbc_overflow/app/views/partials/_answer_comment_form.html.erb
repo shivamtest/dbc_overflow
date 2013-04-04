@@ -1,0 +1,9 @@
+<% if current_user %>
+  <%= form_for @comment do |f| %>
+    Add comment to answer:<%= f.text_field :content %>
+    <%= f.hidden_field :commentable_type, :value => "Answer" %>
+    <%= f.hidden_field :commentable_id, :value => answer %>
+    <%= f.submit "Post comment" %>
+  <%end %>
+<% end %>
+

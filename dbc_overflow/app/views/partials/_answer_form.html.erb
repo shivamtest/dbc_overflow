@@ -1,4 +1,5 @@
 <% if current_user %>
+<h1>Add an Answer to this Question</h1>
   <%= form_for [@question, @answer] do |f| %>
     <%= f.label :content %>
     <%= f.text_area :content %>
