@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     user = User.find(session[:user_id])
     @answer.user_id = user.id
     if @answer.save
-      redirect_to @question
+      render :json => {:answer => @answer}
     else
       redirect_to root_path
     end    
