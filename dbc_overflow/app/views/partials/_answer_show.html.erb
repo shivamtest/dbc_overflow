@@ -2,7 +2,9 @@
   <h3>Answers</h3>
   <% @answers.each do |answer| %>
       <section class="answer">
+
         <ul>
+				<%= answer.votes.map(&:description).inject(:+) %>
             <li><%= answer.content %></li>
               <%= render :partial => "partials/votes", :locals => { :answer => answer } %>
         </ul>

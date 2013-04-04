@@ -1,5 +1,9 @@
+<% if signed_in? && (session[:user_id] != @question.id) %>
+<%= button_to "Upvote", :action => "create", controller: "votes", :vote => {votable_id: @question.id, votable_type: "Question", description: 1 } %>
+<%= button_to "Downvote", :action => "create", controller: "votes", :vote => {votable_id: @question.id, votable_type: "Question", description: -1 } %>
+<% end %>
+<%= @question.votes.map(&:description).inject(:+) %>
 <h1><%= @question.title %></h1>
-
 <p><%= @question.content %></p>
 
 <%= render "partials/answer_show" %>

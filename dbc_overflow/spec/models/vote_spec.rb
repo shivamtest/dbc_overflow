@@ -7,7 +7,7 @@ describe Vote do
   it { should_not allow_value("string").for(:description)}
   it { should_not allow_value(0).for(:description)}
 
-  ["question", "answer"].each do |q|
+  ["Question", "Answer"].each do |q|
     it { should allow_value(q).for(:votable_type)}
   end
 
