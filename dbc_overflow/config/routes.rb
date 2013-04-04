@@ -9,7 +9,7 @@ DbcOverflow::Application.routes.draw do
     resources :answers, only: [:create, :destroy]
   end
 
-  resources :votes, only: [:create]
+  resources :votes, only: [:create, :update]
   
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

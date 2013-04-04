@@ -19,3 +19,13 @@ User.all.each do |user|
 												content: Faker::Lorem.paragraph)
 end
 
+
+User.all.each do |user|
+	Question.all.each do |question|
+		question.answers.create(content: Faker::Lorem.paragraph,
+														user_id: user.id)
+	end
+end
+
+
+

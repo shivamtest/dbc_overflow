@@ -1,8 +1,20 @@
 
 <% if session[:user_id] && (answer.user_id != session[:user_id]) %>
+  
+	<% if find_votes("Answer", answer.id).empty? %>
+	<%= button_to "Upvote", :action => "create", controller: "votes", :vote => {votable_id: answer.id, votable_type: "Answer", description: 1 } %>
+	
+	<%= button_to "Downvote", :action => "create", controller: "votes", :vote => {votable_id: answer.id, votable_type: "Answer", description: -1 } %>
 
-<% if User.find(session[:user_id]).votes.where("votable_type = ? AND votable_id = ?", "answer", answer.id).empty? %>
-<%= button_to "Upvote", :action => "create", controller: "votes", :vote => {votable_id: answer.id, votable_type: "Answer", description: 1 } %>
-<% end %>
-<%= button_to "Downvote", :action => "create", controller: "votes", :vote => {votable_id: answer.id, votable_type: "Answer", description: -1 } %>
+	<% else %>
+		<% if find_votes("Answer",answer.id).first.description == 1 %>
+
+			<%= button_to "Downvote", { :action => "update", controller: "votes", vote:  { id: find_votes("Answer", answer.id).first.id, description: -1 } }, method: :put %>
+		<% else %>
+
+			<%= button_to "Upvote",  { :action => "update" ,controller: "votes", :vote => {id: find_votes("Answer", answer.id).first.id, description: 1 } }, method: :put %>
+		<% end %>
+	<% end %>
+
+
 <% end %>
