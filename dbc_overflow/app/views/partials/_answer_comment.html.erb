@@ -1,7 +1,0 @@
-<% if current_user %>
-  <%= form_for [@answer, @comment] do |f| %>
-    <%= f.label : %>
-    <%= f.text_area :content %>
-    <%= f.submit "Post answer" %>
-  <%end %>
-<% end %>
