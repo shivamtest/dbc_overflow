@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
-
+  has_many :votes
 
   attr_accessible :email, :name, :password_digest, :password, :password_confirmation
   has_secure_password

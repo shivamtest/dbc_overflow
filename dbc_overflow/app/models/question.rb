@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
-  has_many :answers
+  has_many :answers, :dependent => :destroy
   belongs_to :user
-  
+  has_many :votes, :as => :votable
   attr_accessible :best_answer, :content, :title, :user_id
 
   validates :content, :title, :user_id, presence: true
