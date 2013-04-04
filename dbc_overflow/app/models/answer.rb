@@ -6,4 +6,8 @@ class Answer < ActiveRecord::Base
 
   validates :content, :question_id, :user_id, presence: true
   validates :content, length: { minimum: 15 }
+
+  def author?(user)
+  	self.user == user
+  end
 end

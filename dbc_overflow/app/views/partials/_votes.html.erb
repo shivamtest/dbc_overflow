@@ -1,20 +1,12 @@
 
-<% if session[:user_id] && (answer.user_id != session[:user_id]) %>
+<% if signed_in? and !answer.author?(current_user) %>
   
-	<% if find_votes("Answer", answer.id).empty? %>
-	<%= button_to "Upvote", :action => "create", controller: "votes", :vote => {votable_id: answer.id, votable_type: "Answer", description: 1 } %>
-	
-	<%= button_to "Downvote", :action => "create", controller: "votes", :vote => {votable_id: answer.id, votable_type: "Answer", description: -1 } %>
-
+	<% unless current_user.voted?(answer) %>
+		<%= render "partials/create_votes", answer: answer %>
 	<% else %>
-		<% if find_votes("Answer",answer.id).first.description == 1 %>
-
-			<%= button_to "Downvote", { :action => "update", controller: "votes", vote:  { id: find_votes("Answer", answer.id).first.id, description: -1 } }, method: :put %>
-		<% else %>
-
-			<%= button_to "Upvote",  { :action => "update" ,controller: "votes", :vote => {id: find_votes("Answer", answer.id).first.id, description: 1 } }, method: :put %>
-		<% end %>
+		<%= render "partials/edit_votes", answer: answer %>
 	<% end %>
 
-
 <% end %>
+
+

@@ -1,0 +1,6 @@
+	<% if upvote?("Answer", answer.id) %>
+
+			<%= vote_button("update", "Downvote", answer, :put) %>
+		<% else %>
+			<%= vote_button("update", "Upvote", answer, :put) %>
+		<% end %>
